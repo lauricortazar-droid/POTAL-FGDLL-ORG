@@ -116,9 +116,9 @@ function Header() {
           >
             Necesito ayuda
           </Link>
-          <a href="#directorio" onClick={() => setOpen(false)}>
+          <Link href="/mapa" onClick={() => setOpen(false)}>
             Encuentra un grupo
-          </a>
+          </Link>
           <Link href="/centros" onClick={() => setOpen(false)}>
             Centros aliados
           </Link>
@@ -222,6 +222,7 @@ function Finder({ groups }: { groups: PublicGroup[] }) {
           <div>
             <span className="eyebrow">Directorio público</span>
             <h2>Encuentra un grupo cerca de ti.</h2>
+            <Link className="button button-gold" href="/mapa">Abrir mapa de grupos</Link>
           </div>
           <p>
             Consulta únicamente información autorizada para atención pública.
@@ -540,7 +541,7 @@ function Footer() {
         </div>
         <div className="footer-links">
           <Link href="/ayuda-adicciones-merida">Necesito ayuda</Link>
-          <a href="#directorio">Directorio</a>
+          <Link href="/mapa">Mapa y directorio</Link>
           <Link href="/centros">Centros aliados</Link>
           <Link href="/etica">Ética</Link>
           <Link href="/ipe">IPE</Link>
