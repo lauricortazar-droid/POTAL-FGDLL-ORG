@@ -1,0 +1,5 @@
+import {apiError,readJson,requireApiProfile,requireSameOrigin} from '../../lib/portal-api';
+import {ackList,ackDocument,ackReceipt,ackProgress,confirmAck,saveAckAdmin} from '../../lib/ack-store';
+export const dynamic='force-dynamic';
+export async function GET(request:Request){try{const {profile}=await requireApiProfile();const q=new URL(request.url).searchParams;const data=q.has('receipt')?(await ackReceipt(profile,q.get('receipt')!)).record:q.has('document')?await ackDocument(profile,q.get('document')!):await ackList(profile,q.get('admin')==='1');return Response.json(data,{headers:{'cache-control':'private, no-store'}});}catch(e){return apiError(e);}}
+export async function POST(request:Request){try{requireSameOrigin(request);const {profile}=await requireApiProfile();const input=await readJson(request);const data=input.action==='progress'?await ackProgress(profile,input):input.action==='confirm'?await confirmAck(profile,input):await saveAckAdmin(profile,input);return Response.json(data,{headers:{'cache-control':'private, no-store'}});}catch(e){return apiError(e);}}

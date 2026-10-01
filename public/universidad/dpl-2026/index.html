@@ -589,6 +589,41 @@
   }
 
   /* Focus visibility */
+  .study-panel{margin:28px 0 34px;padding:24px;border:1px solid rgba(242,173,0,.35);border-radius:18px;background:#17191e;color:#f7f4ed}
+  .study-panel h2{font-size:clamp(22px,3vw,30px);margin:0 0 8px}
+  .study-panel p{line-height:1.55;color:#d6d6d4}
+  .study-panel label{display:block;font-weight:650;margin:14px 0 8px}
+  .study-panel input{width:100%;max-width:440px;min-height:48px;padding:10px 14px;background:#fff;color:#17191e;border:2px solid #d6d6d4;border-radius:8px;font:inherit}
+  .study-panel progress{display:block;width:100%;max-width:520px;height:16px;accent-color:#f2ad00;margin:12px 0}
+  .study-panel .study-note{font-size:14px}
+  .study-step{padding:12px 0;border-top:1px solid rgba(255,255,255,.16)}
+  .study-step label{font-weight:500;display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+  .study-step input[type=checkbox]{width:20px;min-height:20px;flex:none;accent-color:#f2ad00}
+  .study-step .step-state{display:block;color:#f2ad00;font-weight:700;margin-bottom:8px}
+  .study-step .workbook-locked{opacity:.48;pointer-events:none}
+  .study-finish[hidden]{display:none}
+  .study-finish a{display:inline-block;margin-top:10px;padding:12px 18px;background:#f2ad00;color:#17191e;border-radius:9px;font-weight:750;text-decoration:none}
+  /* Lectura clara en pantalla pequeña y controles táctiles. */
+  :root{--text-mute:#c6c6c2;--hairline:rgba(242,173,0,.36)}
+  .brand{font-size:14px;letter-spacing:.08em}
+  .progress .pill{font-size:14px;min-height:44px;padding:10px 14px;color:#ededeb}
+  .section-head .kicker,.badge{font-size:14px}
+  .concepts{font-size:16px;line-height:1.55}
+  .res-btn{font-size:17px;min-height:54px;line-height:1.35}
+  .res-btn .meta{font-family:Inter,sans-serif;font-size:14px;letter-spacing:0;text-transform:none;color:#d8d8d4}
+  .res-btn.featured .meta{color:#ffdc82;opacity:1}
+  .toggle-res{font-size:16px;min-height:48px}
+  .study-panel .study-note{font-size:16px}
+  .study-step .step-state{font-size:16px}
+  .study-panel input[type="text"]{font-size:16px}
+  @media (max-width:760px){
+    .wrap{padding:20px 16px 64px}
+    .hero{padding:16px 0 30px;margin-bottom:32px}
+    .card{flex-basis:100%;padding:20px 18px}
+    .study-panel{padding:20px 16px}
+    .section-head{align-items:flex-start;flex-direction:column;gap:6px}
+    .res-btn .label{overflow-wrap:anywhere}
+  }
   :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
 
   /* Reduced motion */
@@ -631,6 +666,15 @@
   </section>
 
   <!-- MODULES SECTION -->
+  <section class="study-panel" aria-labelledby="study-title">
+    <h2 id="study-title">Mi avance · Diplomado 2026</h2>
+    <label for="student-name">Nombre completo</label>
+    <input id="student-name" type="text" autocomplete="name" placeholder="Escribe tu nombre para guardar tu proceso">
+    <p class="study-note">Tus respuestas y el avance se guardan en este navegador y dispositivo. Conserva una copia de tus cuadernillos si vas a cambiar de equipo o borrar sus datos.</p>
+    <strong id="course-progress-text">Avance general: 0%</strong>
+    <progress id="course-progress" max="100" value="0">0%</progress>
+    <p id="course-progress-detail" aria-live="polite">Mira cada video y después responde su cuadernillo.</p>
+  </section>
   <div class="section-head">
     <span class="kicker">06 Módulos</span>
     <h2>El camino completo</h2>
@@ -664,12 +708,7 @@
         </a>
         <a class="res-btn featured" href="cuadernillos/M1.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital interactivo del Módulo 1 (abre en nueva ventana)">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></span>
-          <span class="label">Cuadernillo digital<span class="tag-new">NUEVO</span><br><span class="meta">Interactivo · responde aquí</span></span>
-          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="res-btn" href="cuadernillos/M1.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital, Módulo 1 (abre en nueva ventana)">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
-          <span class="label">Cuadernillo digital <span class="meta">HTML</span></span>
+          <span class="label">Cuadernillo digital<br><span class="meta">Responde y guarda tu avance</span></span>
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a class="res-btn outline disabled" href="#m1" aria-disabled="true">
@@ -710,12 +749,7 @@
         </a>
         <a class="res-btn featured" href="cuadernillos/M2.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital interactivo del Módulo 2 (abre en nueva ventana)">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></span>
-          <span class="label">Cuadernillo digital<span class="tag-new">NUEVO</span><br><span class="meta">Interactivo · responde aquí</span></span>
-          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="res-btn" href="cuadernillos/M2.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital, Módulo 2 (abre en nueva ventana)">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
-          <span class="label">Cuadernillo digital <span class="meta">HTML</span></span>
+          <span class="label">Cuadernillo digital<br><span class="meta">Responde y guarda tu avance</span></span>
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a class="res-btn outline disabled" href="#m2" aria-disabled="true">
@@ -761,12 +795,7 @@
         </a>
         <a class="res-btn featured" href="cuadernillos/M3.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital interactivo del Módulo 3 (abre en nueva ventana)">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></span>
-          <span class="label">Cuadernillo digital<span class="tag-new">NUEVO</span><br><span class="meta">Interactivo · responde aquí</span></span>
-          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="res-btn" href="cuadernillos/M3.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital, Módulo 3 (abre en nueva ventana)">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
-          <span class="label">Cuadernillo digital <span class="meta">HTML</span></span>
+          <span class="label">Cuadernillo digital<br><span class="meta">Responde y guarda tu avance</span></span>
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a class="res-btn outline disabled" href="#m3" aria-disabled="true">
@@ -807,12 +836,7 @@
         </a>
         <a class="res-btn featured" href="cuadernillos/M4.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital interactivo del Módulo 4 (abre en nueva ventana)">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></span>
-          <span class="label">Cuadernillo digital<span class="tag-new">NUEVO</span><br><span class="meta">Interactivo · responde aquí</span></span>
-          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="res-btn" href="cuadernillos/M4.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital, Módulo 4 (abre en nueva ventana)">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
-          <span class="label">Cuadernillo digital <span class="meta">HTML</span></span>
+          <span class="label">Cuadernillo digital<br><span class="meta">Responde y guarda tu avance</span></span>
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a class="res-btn outline disabled" href="#m4" aria-disabled="true">
@@ -853,12 +877,7 @@
         </a>
         <a class="res-btn featured" href="cuadernillos/M5.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital interactivo del Módulo 5 (abre en nueva ventana)">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></span>
-          <span class="label">Cuadernillo digital<span class="tag-new">NUEVO</span><br><span class="meta">Interactivo · responde aquí</span></span>
-          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="res-btn" href="cuadernillos/M5.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital, Módulo 5 (abre en nueva ventana)">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
-          <span class="label">Cuadernillo digital <span class="meta">HTML</span></span>
+          <span class="label">Cuadernillo digital<br><span class="meta">Responde y guarda tu avance</span></span>
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a class="res-btn outline disabled" href="#m5" aria-disabled="true">
@@ -904,12 +923,7 @@
         </a>
         <a class="res-btn featured" href="cuadernillos/M6.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital interactivo del Módulo 6 (abre en nueva ventana)">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></span>
-          <span class="label">Cuadernillo digital<span class="tag-new">NUEVO</span><br><span class="meta">Interactivo · responde aquí</span></span>
-          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a class="res-btn" href="cuadernillos/M6.html" target="_blank" rel="noopener" aria-label="Abrir cuadernillo digital, Módulo 6 (abre en nueva ventana)">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
-          <span class="label">Cuadernillo digital <span class="meta">HTML</span></span>
+          <span class="label">Cuadernillo digital<br><span class="meta">Responde y guarda tu avance</span></span>
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a class="res-btn outline disabled" href="#m6" aria-disabled="true">
@@ -927,15 +941,22 @@
 
   </div><!-- /grid -->
 
+  <!-- CIERRE -->
+  <section class="study-panel study-finish" id="cierre-diplomado" hidden>
+    <h2>Tu proceso está completo</h2>
+    <p>Revisa que tu nombre esté escrito como quieres que aparezca en tu reconocimiento. Después llena la solicitud oficial de la generación 2026.</p>
+    <a id="recognition-link" href="/formacion?dpl2026=1#solicitud-reconocimiento">Llenar solicitud de reconocimiento →</a>
+  </section>
+
   <!-- SUBMIT TASK -->
   <section class="submit" id="entrega" aria-labelledby="entrega-title">
-    <h2 id="entrega-title">¿Ya hiciste tu cuadernillo? <em>Mándalo aquí.</em></h2>
-    <p>Toma foto a tu hoja → Abre el formulario → Súbela. <strong style="color:#d6d6d4">30 segundos.</strong></p>
+    <h2 id="entrega-title">Entrega de tareas <em>en papel.</em></h2>
+    <p>Si realizaste una actividad a mano y te pidieron enviarla, toma fotos claras y súbelas al formulario de tareas. Tus cuadernillos digitales se guardan en este dispositivo.</p>
     <a class="cta" href="https://forms.gle/2K6RpwpTjRU8Sm8s9" target="_blank" rel="noopener" aria-label="Subir mi tarea en el formulario oficial de Google (abre en nueva ventana)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
       <span>SUBIR MI TAREA</span>
     </a>
-    <p class="alt">Las tareas se reciben únicamente en este formulario. Para dudas u otros asuntos, puedes escribir por <a href="https://wa.me/529999011852" target="_blank" rel="noopener">WhatsApp</a>.</p>
+    <p class="alt">Para dudas sobre la entrega, escribe por <a href="https://wa.me/529999011852" target="_blank" rel="noopener">WhatsApp</a>.</p>
   </section>
 
   <!-- FOOTER -->
@@ -1009,6 +1030,7 @@
     });
   });
 </script>
+<script src="progreso.js" defer></script>
 
 </body>
 </html>

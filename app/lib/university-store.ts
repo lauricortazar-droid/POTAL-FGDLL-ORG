@@ -11,7 +11,7 @@ const PAYMENT_STATUSES = new Set(["total", "partial", "pending"]);
 const TASK_STATUSES = new Set(["complete", "partial", "pending"]);
 const REQUEST_TYPES = new Set(["printing", "reprinting"]);
 const CONTENT_STATUSES = new Set(["draft", "published", "archived"]);
-const SETTING_KEYS = ["phone", "taskUrl", "recognitionCost", "spinHolder", "spinClabe", "spinDepositCode"] as const;
+const SETTING_KEYS = ["phone", "taskUrl", "spinHolder", "spinClabe", "spinDepositCode"] as const;
 const TASK_FORM_URL = "https://forms.gle/2K6RpwpTjRU8Sm8s9";
 
 const initialModules = [
@@ -111,7 +111,7 @@ async function ensureUniversityContent() {
     db().prepare(`INSERT OR IGNORE INTO university_materials
       (id, program_id, title, description, resource_url, resource_type, status, sort_order, created_by)
       VALUES ('MAT-DPL1-2022-ENTREGA', 'DPL1-2022', 'Enviar actividades', 'Formulario oficial de Google para cargar las fotografías de las tareas.', ?, 'assignment', 'published', 20, 'initial-import')`).bind(TASK_FORM_URL),
-    ...Object.entries({ phone: "9999011852", taskUrl: TASK_FORM_URL, recognitionCost: "$50 a $100", spinHolder: "LAURA CORTAZAR", spinClabe: "728969000008838228", spinDepositCode: "2242-1787-4421-1658" })
+    ...Object.entries({ phone: "9999011852", taskUrl: TASK_FORM_URL, spinHolder: "LAURA CORTAZAR", spinClabe: "728969000008838228", spinDepositCode: "2242-1787-4421-1658" })
       .map(([key, value]) => db().prepare("INSERT OR IGNORE INTO content_settings (key, value) VALUES (?, ?)").bind(`university.${key}`, value)),
     db().prepare("INSERT OR REPLACE INTO content_settings (key, value, updated_at) VALUES ('university_content_v1', 'seeded', CURRENT_TIMESTAMP)"),
   ];
@@ -263,7 +263,7 @@ export async function listUniversityContent(adminView = false, profile?: PortalP
     db().prepare(`SELECT * FROM university_programs ${where} ORDER BY sort_order, created_at`).all<Record<string, unknown>>(),
     db().prepare(`SELECT * FROM university_modules ${where} ORDER BY program_id, sort_order, created_at`).all<Record<string, unknown>>(),
     db().prepare(`SELECT * FROM university_materials ${where} ORDER BY program_id, sort_order, created_at`).all<Record<string, unknown>>(),
-    db().prepare("SELECT key, value FROM content_settings WHERE key LIKE 'university.%'").all<Record<string, unknown>>(),
+    db().prepare("SELECT key, value FROM content_settings WHERE key LIKE 'university.%' AND key <> 'university.recognitionCost'").all<Record<string, unknown>>(),
   ]);
   const values: Record<string, string> = {};
   for (const row of settings.results ?? []) values[String(row.key).replace("university.", "")] = String(row.value ?? "");

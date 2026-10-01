@@ -729,3 +729,30 @@ export const brandResources = sqliteTable("brand_resources", {
   updatedBy: text("updated_by").notNull(),
   updatedAt: text("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
+
+export const ackDocuments = sqliteTable("ack_documents", {
+  id: text("id").primaryKey(), title: text("title").notNull(), zone: text("zone").notNull(),
+  category: text("category").notNull(), meetingDate: text("meeting_date").notNull(),
+  status: text("status").notNull().default("draft"), latestVersionId: text("latest_version_id"),
+  createdAt: text("created_at").notNull(), createdBy: text("created_by").notNull(),
+});
+export const ackVersions = sqliteTable("ack_versions", {
+  id: text("id").primaryKey(), documentId: text("document_id").notNull().references(()=>ackDocuments.id),
+  version: text("version").notNull(), title: text("title").notNull(), zone: text("zone").notNull(),
+  category: text("category").notNull(), meetingDate: text("meeting_date").notNull(), content: text("content").notNull(),
+  status: text("status").notNull().default("draft"), publishedAt: text("published_at"), dueAt: text("due_at"),
+  requiresNew: integer("requires_new").notNull().default(1), createdBy: text("created_by").notNull(),
+}, t=>[uniqueIndex("ack_version_number_idx").on(t.documentId,t.version)]);
+export const ackAssignments = sqliteTable("ack_assignments", {
+  id: text("id").primaryKey(), versionId: text("version_id").notNull().references(()=>ackVersions.id),
+  userEmail: text("user_email").notNull(), userId: text("user_id").notNull(),
+  fullName: text("full_name").notNull(), groupName: text("group_name").notNull(), serviceRole: text("service_role").notNull(), zone: text("zone").notNull(),
+  assignedAt: text("assigned_at").notNull(), openedAt: text("opened_at"), progress: integer("progress").notNull().default(0),
+  followUp: text("follow_up").notNull().default(""), carriedFrom: text("carried_from"),
+},t=>[uniqueIndex("ack_assignment_user_idx").on(t.versionId,t.userEmail),index("ack_assignment_email_idx").on(t.userEmail)]);
+export const acknowledgements = sqliteTable("acknowledgements", {
+  id: integer("id").primaryKey({autoIncrement:true}), assignmentId: text("assignment_id").notNull().references(()=>ackAssignments.id),
+  folio: text("folio").notNull(), userId: text("user_id").notNull(), fullName: text("full_name").notNull(), groupName: text("group_name").notNull(),
+  serviceRole: text("service_role").notNull(), zone: text("zone").notNull(), signatureKey: text("signature_key").notNull(),
+  confirmedAt: text("confirmed_at").notNull(), statement: text("statement").notNull(),
+},t=>[uniqueIndex("ack_receipt_assignment_idx").on(t.assignmentId),uniqueIndex("ack_receipt_folio_idx").on(t.folio)]);

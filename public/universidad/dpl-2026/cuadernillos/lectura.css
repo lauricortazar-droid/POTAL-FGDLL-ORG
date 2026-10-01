@@ -1,0 +1,56 @@
+/* Lectura y uso táctil de los cuadernillos 2026. Respeta el diseño de cada módulo. */
+@media screen {
+  :root {
+    --text-mid: #d4cec4;
+    --text-dim: #b8afa3;
+    --rust: #ef9b82;
+    --rust-dim: #e59a86;
+    --green: #a6d8af;
+    --indigo: #b7c6f9;
+    --indigo-dim: #adbaed;
+    --violet: #d4b7f6;
+    --forest: #acd5a2;
+    --forest-dim: #a8d3a0;
+    --gold: #e8c985;
+    --gold-dim: #dcc087;
+    --sand: #e4c6a5;
+    --sand-dim: #d9ba96;
+    --silver: #d8e3f5;
+    --sage: #b5d3aa;
+    --ember: #f0a584;
+    --border: rgba(255,255,255,.23);
+    --border-mid: rgba(255,255,255,.34);
+  }
+  body { font-size: 1rem; font-weight: 400; line-height: 1.65; }
+  :is(.main,.cover) :is(p,li,label,button,textarea,input) { font-size: max(1rem, 1em); }
+  :is(.main,.cover) :is([class*="hint"],[class*="label"],[class*="meta"],[class*="tag"],.q-num,.s-num,.s-premise,.c-badge,.cover-eyebrow,.cover-meta-value,.prog-pct,.progress-pct) {
+    font-size: max(.875rem, 1em);
+    line-height: 1.5;
+  }
+  :is(.main,.cover) :is(textarea,input:not([type="range"])) { color: var(--text); }
+  :is(.main,.cover) :is(textarea,input)::placeholder { color: var(--text-dim); opacity: 1; }
+  :is(.main,.cover) textarea { min-height: 110px; line-height: 1.55; }
+  :is(.main,.cover) :is(button,input,textarea,a):focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  :is(.main,.cover) button { min-height: 44px; }
+  :is(.main,.cover) .q-text { font-size: 1.125rem; font-weight: 500; line-height: 1.45; }
+  .name-row input,.name-field-cover input { min-width: 0; font-family: 'DM Sans',sans-serif; font-size: 1.125rem; font-weight: 500; }
+  .prog-track,.progress-track { min-height: 6px; border-radius: 8px; }
+  .prog-fill,.progress-fill { min-height: 6px; border-radius: 8px; }
+  .prog-pct,.progress-pct { color: var(--text); font-weight: 700; white-space: nowrap; }
+  @media (max-width: 700px) {
+    .cover { min-height: auto; padding: 32px 20px 42px; gap: 32px; }
+    .section { padding: 44px 20px; max-width: 100%; }
+    .cierre { padding: 44px 20px 72px; }
+    :is(.prog,.prog-bar,.progress-wrap) { padding: 12px 20px; gap: 12px; }
+    .name-row,.name-field-cover { align-items: stretch; flex-direction: column; gap: 8px; max-width: 100%; }
+    .name-row label,.name-field-cover label { white-space: normal; }
+    .name-row input,.name-field-cover input { width: 100%; min-height: 48px; padding: 10px 4px; }
+    :is(.cover-cta,.c-cta) { min-height: 48px; justify-content: center; font-size: 1rem; }
+    .s-title,.section-title { line-height: 1.15; }
+    :is(.q-block,.section) { overflow-wrap: anywhere; }
+  }
+  @media (max-width: 380px) {
+    .cover,.section { padding-left: 16px; padding-right: 16px; }
+    .prog-label,.progress-label { letter-spacing: 0; }
+  }
+}

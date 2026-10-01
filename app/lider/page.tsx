@@ -7,6 +7,7 @@ import { SubFooter, SubHeader } from "../section-shell";
 type Profile = { name: string; email: string; role: string; roleLabel: string; zone: string | null; groupId: number | null } | null;
 
 const options = [
+  { title: "Acuses de Junta", text: "Leer documentos, firmar de enterado y consultar tus comprobantes.", href: "/lider/acuses" },
   { title: "Mi Servicio", text: "Avisos, acuerdos, datos y transparencia.", href: "/lider#mi-servicio" },
   { title: "Centro de Operaciones", text: "Formatos, protocolos y solicitudes.", href: "/lider#operaciones" },
   { title: "Formación", text: "Diplomados, aula y reconocimientos.", href: "/formacion" },
@@ -97,7 +98,7 @@ export default function LiderPage() {
 
       <section className="section leader-options"><div className="shell">
         <div className="section-heading split-heading"><div><span className="eyebrow">Accesos</span><h2>Lo que puede mirar un líder.</h2></div><p>Todo queda concentrado sin meter trámites donde solo necesitas consultar.</p></div>
-        <div className="leader-option-grid">{options.map((item, index) => <Link key={item.title} href={item.href}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.text}</p><b>Abrir →</b></Link>)}</div>
+        <div className="leader-option-grid">{options.map((item, index) => <Link key={item.title} href={item.href}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title === "Acuses de Junta" && <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M14 2H5v20h14V7Z M14 2v5h5 M8 14l3 3 6-6" /></svg>}{item.title}</h3><p>{item.text}</p><b>Abrir →</b></Link>)}</div>
       </div></section>
 
       <section className="section leader-service" id="mi-servicio"><div className="shell leader-section-grid">

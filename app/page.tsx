@@ -134,6 +134,9 @@ function Header() {
           <Link href="/etica" onClick={() => setOpen(false)}>
             Ética
           </Link>
+          <Link href="/lider" onClick={() => setOpen(false)}>
+            Portal del líder
+          </Link>
           <Link
             className="button button-small nav-report-link"
             href="/etica#reporte"
@@ -496,6 +499,7 @@ const publicResources = [
   ["Consejería", "Acompañamiento y orientación en adicciones para familias y grupos.", "/consejero"],
   ["Psicología TRASCENDE", "Atención psicológica integral como recurso aliado.", "/psic"],
   ["Ética", "Canal institucional para conocer principios y levantar reportes.", "/etica"],
+  ["Portal del líder", "Acceso a servicio, formación, documentos y acuses de junta.", "/lider"],
   ["Edúcate", "Información básica para comprender la adicción y pedir ayuda.", "/ayuda-adicciones-merida#faq"],
   ["Modelos de intervención", "Rutas de apoyo sin prometer soluciones mágicas.", "/ayuda-adicciones-merida#modelos"],
 ];
@@ -544,6 +548,7 @@ function Footer() {
           <Link href="/mapa">Mapa y directorio</Link>
           <Link href="/centros">Centros aliados</Link>
           <Link href="/etica">Ética</Link>
+          <Link href="/lider">Portal del líder</Link>
           <Link href="/ipe">IPE</Link>
         </div>
         <p>
