@@ -7,6 +7,7 @@ import { SubFooter, SubHeader } from "../section-shell";
 type Profile = { name: string; email: string; role: string; roleLabel: string; zone: string | null; groupId: number | null } | null;
 
 const options = [
+  { title: "Descargas CSV", text: "Descargar mis acuses, avisos, contactos y datos de servicio.", href: "/lider/descargas" },
   { title: "Acuses de Junta", text: "Leer documentos, firmar de enterado y consultar tus comprobantes.", href: "/lider/acuses" },
   { title: "Mi Servicio", text: "Avisos, acuerdos, datos y transparencia.", href: "/lider#mi-servicio" },
   { title: "Centro de Operaciones", text: "Formatos, protocolos y solicitudes.", href: "/lider#operaciones" },
